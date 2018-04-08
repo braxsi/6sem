@@ -4,7 +4,11 @@ public class UserEntity extends BaseEntity {
 	private String login;
 	private String password;
 	private String email;
-	private boolean isAdmin;
+	private int group_id;
+	private int bandage;
+	private int cartridges;
+	private int radiation;
+	private int gold;
 
 	public UserEntity() {
 	}
@@ -37,11 +41,41 @@ public class UserEntity extends BaseEntity {
 		this.email = email;
 	}
 
-	public boolean isAdmin() {
-		return this.isAdmin;
+	public int getGroup_id() {
+		return this.group_id;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.isAdmin = admin;
+	public void setGroup_id(int group_id) {
+		this.group_id = group_id;
+	}
+	public int getBandage() {
+		return this.bandage;
+	}
+
+	public void setBandage(int bandage) {
+		this.bandage = bandage;
+	}
+	public int getCartridges() {
+		return this.cartridges;
+	}
+
+	public void setCartridges(int cartridges) {
+		this.cartridges = cartridges;
+	}
+
+	public int getRadiation() {
+		return this.radiation;
+	}
+
+	public void setRadiation(int radiation) {
+		this.radiation = radiation;
+	}
+
+	public int getGold() {
+		return this.gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
 	}
 }

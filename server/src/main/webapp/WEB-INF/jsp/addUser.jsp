@@ -6,15 +6,19 @@
 </head>
 <body>
 <h3>Welcome, Enter The User Details</h3>
-<form:form method="POST" action="addUser" modelAttribute="addUser">
+<form:form method="POST" action="addUser" modelAttribute="user">
 	<table>
 		<tr>
-			<td><form:label path="email">email</form:label></td>
-			<td><form:input path="email"/></td>
+			<td><form:label path="login">Nickname</form:label></td>
+			<td><form:input path="login"/></td>
 		</tr>
 		<tr>
-			<td><form:label path="password">password</form:label></td>
-			<td><form:password path="password"/></td>
+			<td><form:label path="password">Password</form:label></td>
+			<td><form:input path="password"/></td>
+		</tr>
+		<tr>
+			<td><form:label path="email">Email</form:label></td>
+			<td><form:input path="email"/></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Submit"/></td>

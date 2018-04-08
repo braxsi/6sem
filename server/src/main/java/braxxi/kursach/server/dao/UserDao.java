@@ -1,9 +1,11 @@
 package braxxi.kursach.server.dao;
 
+
 import braxxi.kursach.commons.entity.UserEntity;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -16,9 +18,75 @@ public class UserDao extends BaseDao {
 		final SqlParameterSource parameterSource = new MapSqlParameterSource()
 				.addValue("login", login)
 				.addValue("password", password);
-		return queryForOptionalObject("SELECT * FROM users WHERE login=:login AND password=:password",
-				parameterSource,
-				USER_ROW_MAPPER);
+		return queryForOptionalObject("SELECT * FROM users_info WHERE login=:login AND password=:password",
+				parameterSource, USER_ROW_MAPPER);
+	}
+
+	public Long addUser(UserEntity user_info) {
+		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
+		final GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
+		getNamedParameterJdbcTemplate().update(
+				"INSERT INTO users_info " +
+						"(login, password, email)" +
+						" VALUES " +
+						"(:login, :password, :email)",
+				sqlParameterSource, generatedKeyHolder);
+		return generatedKeyHolder.getKey().longValue();
+	}
+
+	public void updateUser(UserEntity user_info) {
+		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
+		getNamedParameterJdbcTemplate().update(
+				"UPDATE users_info SET " +
+						"login=:login, password=:password, email=:email" +
+						//", user_id=:user_id" +
+						" WHERE user_id=:user_id",
+				sqlParameterSource);
+	}
+
+	public void addResourses(UserEntity user_info) {
+		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
+		final GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
+		getNamedParameterJdbcTemplate().update(
+				"INSERT INTO resourses " +
+						"(user_id, bandage, cartridges, radiation, gold)" +
+						" VALUES " +
+						"(:user_id, :bandage, :cartridges, :radiation, :gold)",
+				sqlParameterSource, generatedKeyHolder);
+		// return generatedKeyHolder.getKey().longValue();
+	}
+
+	public void updateResourses(UserEntity resourses) {
+		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(resourses);
+		getNamedParameterJdbcTemplate().update(
+				"UPDATE resourses SET " +
+						"bandage=:bandage, cartridges=:cartridges, radiation=:radiation, gold=:gold" +
+						//", user_id=:user_id" +
+						" WHERE user_id=:user_id",
+				sqlParameterSource);
+	}
+
+	public void updateGroup(UserEntity user_info) {
+		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
+		getNamedParameterJdbcTemplate().update(
+				"UPDATE users_info SET " +
+						"group_id=:group_id" +
+						//", user_id=:user_id" +
+						" WHERE user_id=:user_id",
+				sqlParameterSource);
+	}
+
+	private MapSqlParameterSource getMapSqlParameterSource(UserEntity user) {
+		return new MapSqlParameterSource()
+				.addValue("user_id", user.getId())
+				.addValue("login", user.getLogin())
+				.addValue("password", user.getPassword())
+				.addValue("email", user.getEmail())
+				.addValue("group_id", user.getGroup_id())
+				.addValue("bandage", user.getBandage())
+				.addValue("cartridges", user.getCartridges())
+				.addValue("radiation", user.getRadiation())
+				.addValue("gold", user.getGold()) ;
 	}
 
 	public static final RowMapper<UserEntity> USER_ROW_MAPPER = new RowMapper<UserEntity>() {
@@ -29,7 +97,7 @@ public class UserDao extends BaseDao {
 			userEntity.setLogin(rs.getString("login"));
 			userEntity.setPassword(rs.getString("password"));
 			userEntity.setEmail(rs.getString("email"));
-			userEntity.setAdmin(rs.getBoolean("is_admin"));
+			userEntity.setGroup_id(rs.getInt("group_id"));
 			return userEntity;
 		}
 	};

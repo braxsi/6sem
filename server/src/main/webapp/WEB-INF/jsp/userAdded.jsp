@@ -5,6 +5,6 @@
 	<title>User added</title>
 </head>
 <body>
-User <c:out value="${addUser.email}"/> was created
+User <c:out value="${user.email}"/> was created
 </body>
 </html>
