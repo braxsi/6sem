@@ -1,9 +1,7 @@
 package braxxi.kursach.commons.model;
 
 import braxxi.kursach.commons.entity.EstateEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class EstateRequest {
 
 	private EstateEntity estate;

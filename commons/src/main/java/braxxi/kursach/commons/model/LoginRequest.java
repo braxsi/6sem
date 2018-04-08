@@ -1,8 +1,5 @@
 package braxxi.kursach.commons.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginRequest {
 	private String login;
 	private String password;

@@ -1,12 +1,10 @@
 package braxxi.kursach.commons.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.text.RandomStringGenerator;
 
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class EstateEntity extends BaseEntity {
 	private Integer districtId;
 	private BigDecimal totalArea;

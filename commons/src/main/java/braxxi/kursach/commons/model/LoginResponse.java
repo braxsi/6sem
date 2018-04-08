@@ -1,9 +1,7 @@
 package braxxi.kursach.commons.model;
 
 import braxxi.kursach.commons.entity.UserEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginResponse {
 	boolean success;
 	UserEntity user;
