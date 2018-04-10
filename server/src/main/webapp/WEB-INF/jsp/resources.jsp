@@ -7,9 +7,53 @@
 		body { background: url(img/stalker3.jpg); }
 	</style>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="css/header.css" type="text/css">
+	<link rel="stylesheet" href="css/main.css" type="text/css">
     <script src="webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript"></script>
+
+
+	<!-- <link href="https://nubex.ru/templates/nubexsite/plain/css/main.css?v=08112017" rel="stylesheet" type="text/css" title="compact"> -->
+
+
+
 </head>
 <body>
+<nav class="b-header_mainmenu"><ul>
+	<li class="b-header_mainmenu__home"><a href="/">Главная</a></li>
+	<li><a href="/about/features/" title="Играть">Играть</a></li>
+	<li><a href="/support/" title="Профиль">Профиль</a></li>
+	<li><a href="/blog/" class="current" title="Торговля">Торговля</a></li>
+	<li><a href="/we/" title="Сталкеры">Сталкеры</a></li>
+	<li><a href="/we/" title="Настройки">Настройки</a></li>
+	<li><a href="/we/" title="Об игре">Об игре</a></li>
+</ul></nav>
+
+<div class="nav-bar">
+	<div class="container">
+
+		<ul class="nav nav-pills">
+			<li id="m1">
+				<a href="" target="_self">Играть</a>
+			</li>
+			<li id="m2" class="active">
+				<a href="" target="_self">Профиль</a>
+			</li>
+			<li id="m3">
+				<a href="" target="_self">Торговля</a>
+			</li>
+			<li id="m4">
+				<a href="" target="_self">Сталкеры</a>
+			</li>
+			<li id="m5">
+				<a href="" target="_self">Настройки</a>
+			</li>
+			<li id="m6">
+				<a href="" target="_self">Об игре</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
 	<div style="vertical-align: middle; display: table-cell;">
 		<table align="center" bgcolor="#f0f8ff">
