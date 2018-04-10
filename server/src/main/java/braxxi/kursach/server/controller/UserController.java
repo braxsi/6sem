@@ -1,17 +1,17 @@
 package braxxi.kursach.server.controller;
 
 import braxxi.kursach.commons.entity.UserEntity;
-import braxxi.kursach.server.dao.EstateDao;
 import braxxi.kursach.server.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -47,9 +47,10 @@ public class UserController {
         userDao.addResourses(user);
         return "userAdded";
     }
-    @GetMapping("/resourses")
+
+    @GetMapping("/resources")
     public String addResoursesView(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
-        UserEntity eu = userDao.getResourses(new Long(1));
+        UserEntity eu = userDao.getResourses(1L);
         user.setBandage(eu.getBandage());
         user.setRadiation(eu.getRadiation());
         user.setCartridges(eu.getCartridges());
@@ -85,58 +86,74 @@ public class UserController {
             userDao.updateResourses(eu);
         }
         */
-        return "resourses";
+        return "resources";
     }
-    @PostMapping("/resourses")
-    public String addResourses(@ModelAttribute(name = "user") UserEntity user, ModelMap model, HttpServletRequest request) {
-        UserEntity eu = userDao.getResourses(new Long(1));
-        //request.getParameter()
+
+    @PostMapping("/resources")
+    public String addResourses(@RequestParam("action") String action, Model model) {
+//    public String addResourses(TradeResourceRequest request, Model model) {
+//        String action = request.getAction();
+
+        UserEntity user = userDao.getResourses(1L);
+
+        if ("bandage1".equals(action)) {
+            if (user.getGold()>=100) {
+                user.setGold(user.getGold() - 100);
+                user.setBandage(user.getBandage() + 1);
+                userDao.updateResourses(user);
+            }
+        }
+
+/*
         if (request.getParameter("bandage1")!=null) {
-            if (eu.getGold()>=100) {
-                eu.setGold(eu.getGold() - 100);
-                eu.setBandage(eu.getBandage() + 1);
-                userDao.updateResourses(eu);
+            if (user.getGold()>=100) {
+                user.setGold(user.getGold() - 100);
+                user.setBandage(user.getBandage() + 1);
+                userDao.updateResourses(user);
             }
         }
         if (request.getParameter("bandage2")!=null) {
-            if (eu.getBandage()>=1) {
-                eu.setGold(eu.getGold() + 100);
-                eu.setBandage(eu.getBandage() - 1);
-                userDao.updateResourses(eu);
+            if (user.getBandage()>=1) {
+                user.setGold(user.getGold() + 100);
+                user.setBandage(user.getBandage() - 1);
+                userDao.updateResourses(user);
             }
         }
         if (request.getParameter("cartridges1")!=null) {
-            if (eu.getGold()>=500) {
-                eu.setGold(eu.getGold() - 500);
-                eu.setCartridges(eu.getCartridges() + 1);
-                userDao.updateResourses(eu);
+            if (user.getGold()>=500) {
+                user.setGold(user.getGold() - 500);
+                user.setCartridges(user.getCartridges() + 1);
+                userDao.updateResourses(user);
             }
         }
         if (request.getParameter("cartridges2")!=null) {
-            if (eu.getCartridges()>=1) {
-                eu.setGold(eu.getGold() + 500);
-                eu.setCartridges(eu.getCartridges() - 1);
-                userDao.updateResourses(eu);
+            if (user.getCartridges()>=1) {
+                user.setGold(user.getGold() + 500);
+                user.setCartridges(user.getCartridges() - 1);
+                userDao.updateResourses(user);
             }
         }
         if (request.getParameter("radiation1")!=null) {
-            if (eu.getGold()>=1000) {
-                eu.setGold(eu.getGold() - 1000);
-                eu.setRadiation(eu.getRadiation() + 1);
-                userDao.updateResourses(eu);
+            if (user.getGold()>=1000) {
+                user.setGold(user.getGold() - 1000);
+                user.setRadiation(user.getRadiation() + 1);
+                userDao.updateResourses(user);
             }
         }
         if (request.getParameter("radiation2")!=null) {
-            if (eu.getRadiation()>=1) {
-                eu.setGold(eu.getGold() + 1000);
-                eu.setRadiation(eu.getRadiation() - 1);
-                userDao.updateResourses(eu);
+            if (user.getRadiation()>=1) {
+                user.setGold(user.getGold() + 1000);
+                user.setRadiation(user.getRadiation() - 1);
+                userDao.updateResourses(user);
             }
         }
-        user.setBandage(eu.getBandage());
-        user.setRadiation(eu.getRadiation());
-        user.setCartridges(eu.getCartridges());
-        user.setGold(eu.getGold());
-        return "resourses";
+*/
+        user.setBandage(user.getBandage());
+        user.setRadiation(user.getRadiation());
+        user.setCartridges(user.getCartridges());
+        user.setGold(user.getGold());
+
+        model.addAttribute("user", user);
+        return "resources";
     }
 }
