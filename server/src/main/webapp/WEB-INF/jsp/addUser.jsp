@@ -2,10 +2,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
+	<title>Add user</title>
 	<style>
 		body { background: url(img/stalker1.jpg); }
 	</style>
-	<title>Add user</title>
+	<link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
 

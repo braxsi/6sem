@@ -2,10 +2,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
+    <title>Login</title>
     <style>
         body { background: url(img/stalker1.jpg); }
     </style>
-    <title>Login</title>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
 
         <table align="center" bgcolor="#f0f8ff">
             <th align="center" colspan="2"><h3 align="center">Enter login and password</h3></th>
-            <form:form method="POST" action="addUser" modelAttribute="user">
+            <form:form method="POST" action="login" modelAttribute="user">
                 <tr>
                     <td><form:label path="login">Login</form:label></td>
                     <td><form:input path="login" /></td>
