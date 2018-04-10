@@ -101,6 +101,8 @@ public class UserController {
                 user.setGold(user.getGold() - 100);
                 user.setBandage(user.getBandage() + 1);
                 userDao.updateResourses(user);
+            } else {
+                // alert
             }
         }
 

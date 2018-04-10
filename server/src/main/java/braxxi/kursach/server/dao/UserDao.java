@@ -81,6 +81,12 @@ public class UserDao extends BaseDao {
 						" WHERE user_id=:user_id",
 				sqlParameterSource);
 	}
+	public UserEntity login(String login) {
+		final SqlParameterSource parameterSource = new MapSqlParameterSource()
+				.addValue("login", login);
+		return queryForOptionalObject("SELECT * FROM users_info WHERE login=:login",
+				parameterSource, USER_ROW_MAPPER);
+	}
 
 	private MapSqlParameterSource getMapSqlParameterSource(UserEntity user) {
 		return new MapSqlParameterSource()
