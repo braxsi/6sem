@@ -66,6 +66,12 @@ public class UserDao extends BaseDao {
 				sqlParameterSource);
 	}
 
+	public UserEntity getResourses(Long user_id) {
+		final SqlParameterSource parameterSource = new MapSqlParameterSource()
+				.addValue("user_id", user_id);
+		return queryForOptionalObject("SELECT * FROM resourses WHERE user_id=:user_id",
+				parameterSource, RESOURSES_ROW_MAPPER);
+	}
 	public void updateGroup(UserEntity user_info) {
 		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
 		getNamedParameterJdbcTemplate().update(
@@ -98,6 +104,18 @@ public class UserDao extends BaseDao {
 			userEntity.setPassword(rs.getString("password"));
 			userEntity.setEmail(rs.getString("email"));
 			userEntity.setGroup_id(rs.getInt("group_id"));
+			return userEntity;
+		}
+	};
+	public static final RowMapper<UserEntity> RESOURSES_ROW_MAPPER = new RowMapper<UserEntity>() {
+		@Override
+		public UserEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			UserEntity userEntity = new UserEntity();
+			userEntity.setId(rs.getLong("user_id"));
+			userEntity.setBandage(rs.getInt("bandage"));
+			userEntity.setCartridges(rs.getInt("cartridges"));
+			userEntity.setRadiation(rs.getInt("radiation"));
+			userEntity.setGold(rs.getInt("gold"));
 			return userEntity;
 		}
 	};

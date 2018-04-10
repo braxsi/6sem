@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
+
 	<title>Add user</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		</tr>
 		<tr>
 			<td><form:label path="password">Password</form:label></td>
-			<td><form:input path="password"/></td>
+			<td><form:password path="password"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="email">Email</form:label></td>
