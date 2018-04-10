@@ -7,6 +7,7 @@
 		body { background: url(img/stalker3.jpg); }
 	</style>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
+    <script src="webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
