@@ -4,6 +4,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
+<style>
+	body { background: url(img/stalker3.jpg); }
+</style>
 <head>
 	<title>Trade JSP</title>
 </head>
