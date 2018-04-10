@@ -96,7 +96,7 @@ public class UserController {
 
         UserEntity user = userDao.getResourses(1L);
 
-        if ("bandage1".equals(action)) {
+        if ("bandage+".equals(action)) {
             if (user.getGold()>=100) {
                 user.setGold(user.getGold() - 100);
                 user.setBandage(user.getBandage() + 1);
@@ -104,50 +104,42 @@ public class UserController {
             }
         }
 
-/*
-        if (request.getParameter("bandage1")!=null) {
-            if (user.getGold()>=100) {
-                user.setGold(user.getGold() - 100);
-                user.setBandage(user.getBandage() + 1);
-                userDao.updateResourses(user);
-            }
-        }
-        if (request.getParameter("bandage2")!=null) {
+        if ("bandage-".equals(action)) {
             if (user.getBandage()>=1) {
                 user.setGold(user.getGold() + 100);
                 user.setBandage(user.getBandage() - 1);
                 userDao.updateResourses(user);
             }
         }
-        if (request.getParameter("cartridges1")!=null) {
+        if ("cartridges+".equals(action)) {
             if (user.getGold()>=500) {
                 user.setGold(user.getGold() - 500);
                 user.setCartridges(user.getCartridges() + 1);
                 userDao.updateResourses(user);
             }
         }
-        if (request.getParameter("cartridges2")!=null) {
+        if ("cartridges-".equals(action)) {
             if (user.getCartridges()>=1) {
                 user.setGold(user.getGold() + 500);
                 user.setCartridges(user.getCartridges() - 1);
                 userDao.updateResourses(user);
             }
         }
-        if (request.getParameter("radiation1")!=null) {
+        if ("radiation+".equals(action)) {
             if (user.getGold()>=1000) {
                 user.setGold(user.getGold() - 1000);
                 user.setRadiation(user.getRadiation() + 1);
                 userDao.updateResourses(user);
             }
         }
-        if (request.getParameter("radiation2")!=null) {
+        if ("radiation-".equals(action)) {
             if (user.getRadiation()>=1) {
                 user.setGold(user.getGold() + 1000);
                 user.setRadiation(user.getRadiation() - 1);
                 userDao.updateResourses(user);
             }
         }
-*/
+
         user.setBandage(user.getBandage());
         user.setRadiation(user.getRadiation());
         user.setCartridges(user.getCartridges());
@@ -155,5 +147,9 @@ public class UserController {
 
         model.addAttribute("user", user);
         return "resources";
+    }
+    @GetMapping("/login")
+    public String ingressUserView(@ModelAttribute(name = "user") UserEntity user) {
+        return "login";
     }
 }
