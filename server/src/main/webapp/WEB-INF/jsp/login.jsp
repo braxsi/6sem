@@ -25,6 +25,9 @@
                 </tr>
                     <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
                 </tr>
+                </tr>
+                <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
+                </tr>
             </form:form>
         </table>
     </div>
