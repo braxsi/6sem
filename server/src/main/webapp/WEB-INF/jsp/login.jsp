@@ -26,7 +26,7 @@
                     <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
                 </tr>
                 </tr>
-                <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
+                <td  align="center" colspan="2"><a href="/6sem/addUser">Зарегестрироваться</a></td>
                 </tr>
             </form:form>
         </table>
