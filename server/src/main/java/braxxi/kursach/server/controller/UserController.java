@@ -154,4 +154,8 @@ public class UserController {
     public String ingressUserView(@ModelAttribute(name = "user") UserEntity user) {
         return "login";
     }
+    @GetMapping("/updateUser")
+    public String updateUserView(@ModelAttribute(name = "user") UserEntity user) {
+        return "updateUser";
+    }
 }
