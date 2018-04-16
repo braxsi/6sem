@@ -19,10 +19,9 @@
 </head>
 <body>
 <nav class="b-header_mainmenu"><ul>
-	<li class="b-header_mainmenu__home"><a href="/">Главная</a></li>
 	<li><a href="/about/features/" title="Играть">Играть</a></li>
-	<li><a href="/support/" title="Профиль">Профиль</a></li>
-	<li><a href="/blog/" class="current" title="Торговля">Торговля</a></li>
+	<li><a href="/updateUser" title="Профиль">Профиль</a></li>
+	<li><a href="/resources" class="current" title="Ресурсы">Ресурсы</a></li>
 	<li><a href="/we/" title="Сталкеры">Сталкеры</a></li>
 	<li><a href="/we/" title="Настройки">Настройки</a></li>
 	<li><a href="/we/" title="Об игре">Об игре</a></li>

@@ -1,6 +1,7 @@
 package braxxi.kursach.server.dao;
 
 
+import braxxi.kursach.commons.entity.GroupEntity;
 import braxxi.kursach.commons.entity.UserEntity;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class UserDao extends BaseDao {
@@ -88,6 +90,18 @@ public class UserDao extends BaseDao {
 				parameterSource, USER_ROW_MAPPER);
 	}
 
+	public GroupEntity getGroup(int group_id) {
+		final SqlParameterSource parameterSource = new MapSqlParameterSource()
+				.addValue("group_id", group_id);
+		return queryForOptionalObject("SELECT * FROM groups WHERE group_id=:group_id",
+				parameterSource, GROUP_ROW_MAPPER);
+	}
+
+	public List<GroupEntity> getAllGroups () {
+		return query("SELECT * FROM groups",
+				null, GROUP_ROW_MAPPER);
+	}
+
 	private MapSqlParameterSource getMapSqlParameterSource(UserEntity user) {
 		return new MapSqlParameterSource()
 				.addValue("user_id", user.getId())
@@ -98,7 +112,8 @@ public class UserDao extends BaseDao {
 				.addValue("bandage", user.getBandage())
 				.addValue("cartridges", user.getCartridges())
 				.addValue("radiation", user.getRadiation())
-				.addValue("gold", user.getGold()) ;
+				.addValue("gold", user.getGold())
+		        .addValue("map", user.getMap()) ;
 	}
 
 	public static final RowMapper<UserEntity> USER_ROW_MAPPER = new RowMapper<UserEntity>() {
@@ -113,6 +128,17 @@ public class UserDao extends BaseDao {
 			return userEntity;
 		}
 	};
+
+	public static final RowMapper<GroupEntity> GROUP_ROW_MAPPER = new RowMapper<GroupEntity>() {
+		@Override
+		public GroupEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			GroupEntity groupEntity = new GroupEntity();
+			groupEntity.setId(rs.getLong("user_id"));
+			groupEntity.setName(rs.getString("name"));
+			return groupEntity;
+		}
+	};
+
 	public static final RowMapper<UserEntity> RESOURSES_ROW_MAPPER = new RowMapper<UserEntity>() {
 		@Override
 		public UserEntity mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -1,9 +1,12 @@
 package braxxi.kursach.server.controller;
 
+import braxxi.kursach.commons.entity.GroupEntity;
 import braxxi.kursach.commons.entity.UserEntity;
 import braxxi.kursach.server.dao.UserDao;
+import braxxi.kursach.server.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -39,53 +43,27 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
-        user.setId(userDao.addUser(user));
-        user.setRadiation(0);
-        user.setBandage(0);
-        user.setCartridges(0);
-        user.setGold(1000);
-        userDao.addResourses(user);
-        return "userAdded";
+        UserEntity temp = userDao.login(user.getLogin());
+        if(temp == null) {
+            user.setId(userDao.addUser(user));
+            user.setRadiation(0);
+            user.setBandage(0);
+            user.setCartridges(0);
+            user.setGold(1000);
+            userDao.addResourses(user);
+            return "userAdded";
+        } else {
+            return "addUser";
+        }
     }
 
     @GetMapping("/resources")
     public String addResoursesView(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
-        UserEntity eu = userDao.getResourses(1L);
+        UserEntity eu = userDao.getResourses(getCurrentUserId());
         user.setBandage(eu.getBandage());
         user.setRadiation(eu.getRadiation());
         user.setCartridges(eu.getCartridges());
         user.setGold(eu.getGold());
-/*        if (model.get("bandage+")!=null) {
-            eu.setGold(eu.getGold()-100);
-            eu.setBandage(eu.getBandage()+1);
-            userDao.updateResourses(eu);
-        }
-        if (model.get("bandage-")!=null) {
-            eu.setGold(eu.getGold()+100);
-            eu.setBandage(eu.getBandage()-1);
-            userDao.updateResourses(eu);
-        }
-        if (model.get("cartridges+")!=null) {
-            eu.setGold(eu.getGold()-500);
-            eu.setCartridges(eu.getCartridges()+1);
-            userDao.updateResourses(eu);
-        }
-        if (model.get("cartridges-")!=null) {
-            eu.setGold(eu.getGold()+500);
-            eu.setCartridges(eu.getCartridges()-1);
-            userDao.updateResourses(eu);
-        }
-        if (model.get("radiation+")!=null) {
-            eu.setGold(eu.getGold()-1000);
-            eu.setRadiation(eu.getRadiation()+1);
-            userDao.updateResourses(eu);
-        }
-        if (model.get("radiation-")!=null) {
-            eu.setGold(eu.getGold()+1000);
-            eu.setRadiation(eu.getRadiation()-1);
-            userDao.updateResourses(eu);
-        }
-        */
         return "resources";
     }
 
@@ -94,7 +72,7 @@ public class UserController {
 //    public String addResourses(TradeResourceRequest request, Model model) {
 //        String action = request.getAction();
 
-        UserEntity user = userDao.getResourses(1L);
+        UserEntity user = userDao.getResourses(getCurrentUserId());
 
         if ("bandage+".equals(action)) {
             if (user.getGold()>=100) {
@@ -150,12 +128,37 @@ public class UserController {
         model.addAttribute("user", user);
         return "resources";
     }
+
+    private Long getCurrentUserId() {
+        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        return currentUser.getUserEntity().getId();
+    }
+
     @GetMapping("/login")
     public String ingressUserView(@ModelAttribute(name = "user") UserEntity user) {
         return "login";
     }
+
     @GetMapping("/updateUser")
     public String updateUserView(@ModelAttribute(name = "user") UserEntity user) {
         return "updateUser";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUser(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
+        userDao.updateUser(user);
+        return "userUpdated";
+    }
+
+    @GetMapping("/choiceGroup")
+    public String choiceGroupView(Model model) {
+        model.addAttribute("groups", userDao.getAllGroups ());
+        return "choiceGroup";
+    }
+
+    @PostMapping("/choiceGroup")
+    public String choiceGroup(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
+        userDao.updateGroup(user);
+        return "groupChoised";
     }
 }

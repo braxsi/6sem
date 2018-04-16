@@ -16,13 +16,20 @@
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-
+<nav class="b-header_mainmenu"><ul>
+    <li><a href="/about/features/" title="Играть">Играть</a></li>
+    <li><a href="/updateUser" title="Профиль">Профиль</a></li>
+    <li><a href="/resources" class="current" title="Ресурсы">Ресурсы</a></li>
+    <li><a href="/we/" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="/we/" title="Настройки">Настройки</a></li>
+    <li><a href="/we/" title="Об игре">Об игре</a></li>
+</ul></nav>
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
 
         <table align="center" bgcolor="#f0f8ff">
             <th align="center" colspan="2"><h3 align="center">Welcome, Update The User Details</h3></th>
-            <form:form method="POST" action="addUser" modelAttribute="user">
+            <form:form method="POST" action="updateUser" modelAttribute="user">
                 <tr>
                     <td><form:label path="login">Nickname</form:label></td>
                     <td><form:input path="login"/></td>
