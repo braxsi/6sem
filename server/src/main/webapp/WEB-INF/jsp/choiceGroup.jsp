@@ -15,11 +15,10 @@
         <table align="center" bgcolor="#f0f8ff">
             <th align="center"><h3 align="center">Welcome, choice group</h3></th>
 
-<form:form method="POST" action="updateUser" modelAttribute="groups">
+<form:form method="POST" action="choiceGroup">
 
 <tr class="form-group"><td>
-    <c:forEach var="item" items="${sorts}">
-        ${item.name}
+    <c:forEach var="item" items="${groups}">
         <div><input type="radio" name="group" id="${item.id}" value="${item.id}"><label for="${item.id}">${item.name}</label>
         </div>
     </c:forEach>

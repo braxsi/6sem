@@ -133,7 +133,7 @@ public class UserDao extends BaseDao {
 		@Override
 		public GroupEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 			GroupEntity groupEntity = new GroupEntity();
-			groupEntity.setId(rs.getLong("user_id"));
+			groupEntity.setId(rs.getLong("group_id"));
 			groupEntity.setName(rs.getString("name"));
 			return groupEntity;
 		}
