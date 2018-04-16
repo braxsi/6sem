@@ -157,8 +157,11 @@ public class UserController {
     }
 
     @PostMapping("/choiceGroup")
-    public String choiceGroup(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
-        userDao.updateGroup(user);
+    public String choiceGroup(@RequestParam("group") int group, Model model) {
+        // UserEntity ue = new UserEntity(getCurrentUserId());
+        UserEntity ue = new UserEntity(new Long(3));
+        ue.setGroup_id(group);
+        userDao.updateGroup(ue);
         return "groupChoised";
     }
 }
