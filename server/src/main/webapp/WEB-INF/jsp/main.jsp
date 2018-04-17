@@ -13,8 +13,10 @@
     <div style="vertical-align: middle; display: table-cell;">
         <table align="center" bgcolor="#f0f8ff">
             <th align="center" colspan="4"><h3 align="center">Trade</h3></th>
-123123123
+            <tr>
+                <td align="center">123123123</td>
             </tr>
+            <tr>
             <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
             </tr>
         </table>

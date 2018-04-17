@@ -4,12 +4,12 @@
 <head>
     <title>Trade JSP</title>
 	<style>
-		body { background: url(img/stalker3.jpg); }
+		body { background: url(${pageContext.servletContext.contextPath}/img/stalker3.jpg); }
 	</style>
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="css/header.css" type="text/css">
-	<link rel="stylesheet" href="css/main.css" type="text/css">
-    <script src="webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/header.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/main.css" type="text/css">
+    <script src="${pageContext.servletContext.contextPath}/webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript"></script>
 
 
 	<!-- <link href="https://nubex.ru/templates/nubexsite/plain/css/main.css?v=08112017" rel="stylesheet" type="text/css" title="compact"> -->

@@ -160,8 +160,10 @@ public class UserController {
     }
 
     @PostMapping("/main")
-    public String main(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
-        userDao.updateUser(user);
+    public String main(@RequestParam("action") String action, Model model) {
+        if ("radiation-".equals(action)) {
+
+        }
         return "loc1_1";
     }
 }
