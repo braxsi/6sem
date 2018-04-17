@@ -10,6 +10,9 @@
 </head>
 <body>
 Group was save
+</tr>
+<td align="center" colspan="2"><input type="submit" value="Submit"/></td>
+</tr>
 </body>
 </html>
 

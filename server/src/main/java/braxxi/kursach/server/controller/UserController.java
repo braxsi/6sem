@@ -164,4 +164,14 @@ public class UserController {
         userDao.updateGroup(ue);
         return "groupChoised";
     }
+    @GetMapping("/main")
+    public String mainView(@ModelAttribute(name = "user") UserEntity user) {
+        return "main";
+    }
+
+    @PostMapping("/main")
+    public String main(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
+        userDao.updateUser(user);
+        return "loc1_1";
+    }
 }
