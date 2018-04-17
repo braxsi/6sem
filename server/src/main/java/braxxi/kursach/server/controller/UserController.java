@@ -1,11 +1,9 @@
 package braxxi.kursach.server.controller;
 
-import braxxi.kursach.commons.entity.GroupEntity;
 import braxxi.kursach.commons.entity.UserEntity;
 import braxxi.kursach.server.dao.UserDao;
 import braxxi.kursach.server.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -24,10 +21,6 @@ public class UserController {
 
     @Autowired
     UserDao userDao;
-
-
-    @Value("${application.message:Hello World}")
-    private String message = "Hello World";
 
     @GetMapping("/")
     public String welcome(Map<String, Object> model) {
@@ -57,7 +50,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/resources")
+    @GetMapping("/user/resources")
     public String addResoursesView(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
         UserEntity eu = userDao.getResourses(getCurrentUserId());
         user.setBandage(eu.getBandage());
@@ -67,11 +60,8 @@ public class UserController {
         return "resources";
     }
 
-    @PostMapping("/resources")
+    @PostMapping("/user/resources")
     public String addResourses(@RequestParam("action") String action, Model model) {
-//    public String addResourses(TradeResourceRequest request, Model model) {
-//        String action = request.getAction();
-
         UserEntity user = userDao.getResourses(getCurrentUserId());
 
         if ("bandage+".equals(action)) {
@@ -130,7 +120,7 @@ public class UserController {
     }
 
     private Long getCurrentUserId() {
-        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return currentUser.getUserEntity().getId();
     }
 
@@ -139,27 +129,27 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/updateUser")
+    @GetMapping("/user/updateUser")
     public String updateUserView(@ModelAttribute(name = "user") UserEntity user) {
         return "updateUser";
     }
 
-    @PostMapping("/updateUser")
+    @PostMapping("/user/updateUser")
     public String updateUser(@ModelAttribute(name = "user") UserEntity user, ModelMap model) {
         userDao.updateUser(user);
         return "userUpdated";
     }
 
-    @GetMapping("/choiceGroup")
+    @GetMapping("/user/choiceGroup")
     public String choiceGroupView(Model model) {
         model.addAttribute("groups", userDao.getAllGroups ());
         return "choiceGroup";
     }
 
-    @PostMapping("/choiceGroup")
+    @PostMapping("/user/choiceGroup")
     public String choiceGroup(@RequestParam("group") int group, Model model) {
         // UserEntity ue = new UserEntity(getCurrentUserId());
-        UserEntity ue = new UserEntity(new Long(3));
+        UserEntity ue = new UserEntity(getCurrentUserId());
         ue.setGroup_id(group);
         userDao.updateGroup(ue);
         return "groupChoised";

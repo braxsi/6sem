@@ -17,12 +17,12 @@
 </head>
 <body>
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="/about/features/" title="Играть">Играть</a></li>
-    <li><a href="/updateUser" title="Профиль">Профиль</a></li>
-    <li><a href="/resources" class="current" title="Ресурсы">Ресурсы</a></li>
-    <li><a href="/we/" title="Сталкеры">Сталкеры</a></li>
-    <li><a href="/we/" title="Настройки">Настройки</a></li>
-    <li><a href="/we/" title="Об игре">Об игре</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/about/features/" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/resources" class="current" title="Ресурсы">Ресурсы</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Об игре">Об игре</a></li>
 </ul></nav>
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
