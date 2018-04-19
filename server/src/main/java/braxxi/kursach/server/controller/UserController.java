@@ -1,9 +1,6 @@
 package braxxi.kursach.server.controller;
 
-import braxxi.kursach.commons.entity.PageEntity;
-import braxxi.kursach.commons.entity.Script1;
-import braxxi.kursach.commons.entity.ScriptEntity;
-import braxxi.kursach.commons.entity.UserEntity;
+import braxxi.kursach.commons.entity.*;
 import braxxi.kursach.server.dao.UserDao;
 import braxxi.kursach.server.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,37 +154,49 @@ public class UserController {
         userDao.updateGroup(ue);
         return "groupChoised";
     }
-    @GetMapping("/main")
+    @GetMapping("/user/main")
     public String mainView(@ModelAttribute(name = "user") UserEntity user) {
         return "main";
     }
 
-    @PostMapping("/main")
-    public String main(@RequestParam("action") String action, Model model) {
+    @PostMapping("/user/main")
+    public String main(Model model) {
         int pageID = 1;
         ScriptEntity se = Script1.create();
-        PageEntity pe = (PageEntity) se.getPageList().get(pageID);
-
-        return "loc1_1";
+        //PageEntity pe = (PageEntity) se.getPageList().get(pageID);
+        return "redirect:game";
     }
 
-    @GetMapping("/game")
+    @GetMapping("/user/game")
     public String gameView(Model model) {
-        UserEntity ue = new UserEntity(getCurrentUserId());
-        int pageID = Integer.parseInt(ue.getMap());
+        UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        Long pageID = ue.getMap();
+        ////
         ScriptEntity se = Script1.create();
-        PageEntity pe = (PageEntity) se.getPageList().get(pageID);
+        Map pm = se.getPageMap();
+        PageEntity pe = (PageEntity) pm.get(pageID);
         model.addAttribute("page", pe);
         return "game";
     }
 
-    @PostMapping("/game")
-    public String game(@RequestParam("action") String action, Model model) {
-        //int pageID = 1;
+    @PostMapping("/user/game")
+    public String game(@RequestParam("action") Integer action, Model model) {
+        UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        Long pageID = new Long(ue.getMap());
+        ////
         ScriptEntity se = Script1.create();
-        //PageEntity pe = (PageEntity) se.getPageList().get(pageID);
-
-        return "loc1_1";
+        Map pm = se.getPageMap();
+        PageEntity pe = (PageEntity) pm.get(pageID);
+        ActionEntity ae = (ActionEntity) pe.getActionList().get(action);
+        ue.setBandage(ue.getBandage()+ae.getBandage());
+        ue.setRadiation(ue.getRadiation()+ae.getRadiation());
+        ue.setCartridges(ue.getRadiation()+ae.getRadiation());
+        ue.setGold(ue.getGold()+ae.getGold());
+        ue.setMap(new Long(ae.getTransit()));
+        userDao.updateResourses(ue);
+        PageEntity peNew = (PageEntity) pm.get(ue.getMap());
+        model.addAttribute("page", peNew);
+        return "game";
     }
 
 

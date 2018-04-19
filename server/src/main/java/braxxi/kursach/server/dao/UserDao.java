@@ -24,6 +24,20 @@ public class UserDao extends BaseDao {
 				parameterSource, USER_ROW_MAPPER);
 	}
 
+	public UserEntity getAllUserInfo(Long userID) {
+		final SqlParameterSource parameterSource = new MapSqlParameterSource()
+				.addValue("user_id", userID);
+		UserEntity ue = queryForOptionalObject("SELECT * FROM users_info WHERE user_id=:user_id",
+				parameterSource, USER_ROW_MAPPER);
+		UserEntity ue1 = getResourses(userID);
+		ue.setBandage(ue1.getBandage());
+		ue.setRadiation(ue1.getRadiation());
+		ue.setCartridges(ue1.getCartridges());
+		ue.setGold(ue1.getGold());
+		ue.setMap(ue1.getMap());
+		return ue;
+	}
+
 	public Long addUser(UserEntity user_info) {
 		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
 		final GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
@@ -62,7 +76,7 @@ public class UserDao extends BaseDao {
 		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(resourses);
 		getNamedParameterJdbcTemplate().update(
 				"UPDATE resourses SET " +
-						"bandage=:bandage, cartridges=:cartridges, radiation=:radiation, gold=:gold" +
+						"bandage=:bandage, cartridges=:cartridges, radiation=:radiation, gold=:gold, map=:map" +
 						//", user_id=:user_id" +
 						" WHERE user_id=:user_id",
 				sqlParameterSource);
@@ -148,6 +162,7 @@ public class UserDao extends BaseDao {
 			userEntity.setCartridges(rs.getInt("cartridges"));
 			userEntity.setRadiation(rs.getInt("radiation"));
 			userEntity.setGold(rs.getInt("gold"));
+			userEntity.setMap(new Long(rs.getInt("map")));
 			return userEntity;
 		}
 	};

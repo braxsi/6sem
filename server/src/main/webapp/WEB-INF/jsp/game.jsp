@@ -50,7 +50,7 @@
                     <td align="center" colspan="2">
                     <form:form method="POST" action="game">
                         <c:forEach var="item" items="${page.actionList}" varStatus="status">
-                            <button type="submit" value="${status.index}" name="button">${status.index+1}</button>
+                            <button type="submit" value="${status.index}" name="action">${status.index+1}</button>
                         </c:forEach>
                     </form:form>
                     </td>

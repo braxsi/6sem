@@ -9,7 +9,7 @@ public class UserEntity extends BaseEntity {
 	private int cartridges;
 	private int radiation;
 	private int gold;
-	private String map;
+	private Long map;
 
 
 	public UserEntity() {
@@ -75,10 +75,10 @@ public class UserEntity extends BaseEntity {
 		this.gold = gold;
 	}
 
-    public String getMap() {
+    public Long getMap() {
         return this.map;
     }
-    public void setMap(String map) {
+    public void setMap(Long map) {
         this.map = map;
     }
 }
