@@ -1,5 +1,8 @@
 package braxxi.kursach.server.controller;
 
+import braxxi.kursach.commons.entity.PageEntity;
+import braxxi.kursach.commons.entity.Script1;
+import braxxi.kursach.commons.entity.ScriptEntity;
 import braxxi.kursach.commons.entity.UserEntity;
 import braxxi.kursach.server.dao.UserDao;
 import braxxi.kursach.server.security.CurrentUser;
@@ -161,9 +164,31 @@ public class UserController {
 
     @PostMapping("/main")
     public String main(@RequestParam("action") String action, Model model) {
-        if ("radiation-".equals(action)) {
+        int pageID = 1;
+        ScriptEntity se = Script1.create();
+        PageEntity pe = (PageEntity) se.getPageList().get(pageID);
 
-        }
         return "loc1_1";
     }
+
+    @GetMapping("/game")
+    public String gameView(Model model) {
+        UserEntity ue = new UserEntity(getCurrentUserId());
+        int pageID = Integer.parseInt(ue.getMap());
+        ScriptEntity se = Script1.create();
+        PageEntity pe = (PageEntity) se.getPageList().get(pageID);
+        model.addAttribute("page", pe);
+        return "game";
+    }
+
+    @PostMapping("/game")
+    public String game(@RequestParam("action") String action, Model model) {
+        //int pageID = 1;
+        ScriptEntity se = Script1.create();
+        //PageEntity pe = (PageEntity) se.getPageList().get(pageID);
+
+        return "loc1_1";
+    }
+
+
 }
