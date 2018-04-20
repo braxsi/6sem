@@ -185,19 +185,53 @@ public class UserController {
         Long pageID = new Long(ue.getMap());
         ////
         ScriptEntity se = Script1.create();
-        Map pm = se.getPageMap();
-        PageEntity pe = (PageEntity) pm.get(pageID);
-        ActionEntity ae = (ActionEntity) pe.getActionList().get(action);
-        ue.setBandage(ue.getBandage()+ae.getBandage());
-        ue.setRadiation(ue.getRadiation()+ae.getRadiation());
-        ue.setCartridges(ue.getRadiation()+ae.getRadiation());
-        ue.setGold(ue.getGold()+ae.getGold());
-        ue.setMap(new Long(ae.getTransit()));
-        userDao.updateResourses(ue);
-        PageEntity peNew = (PageEntity) pm.get(ue.getMap());
-        model.addAttribute("page", peNew);
-        return "game";
-    }
 
+        if (pageID.equals(se.getEndPage())) {
+            return "redirect:gameEnd";
+        } else {
+            Map pm = se.getPageMap();
+            PageEntity pe = (PageEntity) pm.get(pageID);
+            ActionEntity ae = (ActionEntity) pe.getActionList().get(action);
+            ue.setBandage(ue.getBandage() + ae.getBandage());
+            ue.setRadiation(ue.getRadiation() + ae.getRadiation());
+            ue.setCartridges(ue.getRadiation() + ae.getRadiation());
+            ue.setGold(ue.getGold() + ae.getGold());
+            if (ae.getTransit()== -1) {
+                ue.setMap(new Long(0));
+                userDao.updateResourses(ue);
+                return "redirect:die";
+            } else {
+                ue.setMap(new Long(ae.getTransit()));
+                userDao.updateResourses(ue);
+                PageEntity peNew = (PageEntity) pm.get(ue.getMap());
+                model.addAttribute("page", peNew);
+            }
+            return "game";
+        }
+    }
+    @GetMapping("/user/gameEnd")
+    public String gameEndView(Model model) {
+        //UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        //Long pageID = ue.getMap();
+        ////
+        return "gameEnd";
+    }
+    @PostMapping("/user/gameEnd")
+    public String gameEnd(Model model) {
+        return "redirect:main";
+
+    }
+    @GetMapping("/user/die")
+    public String dieView(Model model) {
+        //UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        //Long pageID = ue.getMap();
+        ////
+        return "die";
+    }
+    @PostMapping("/user/die")
+    public String die(Model model) {
+        return "redirect:main";
+
+    }
 
 }
