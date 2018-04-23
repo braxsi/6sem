@@ -24,34 +24,8 @@
 	<li><a href="${pageContext.servletContext.contextPath}/user/resources" class="current" title="Ресурсы">Ресурсы</a></li>
 	<li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
 	<li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
-	<li><a href="${pageContext.servletContext.contextPath}/we/" title="Об игре">Об игре</a></li>
+	<li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
-
-<div class="nav-bar">
-	<div class="container">
-
-		<ul class="nav nav-pills">
-			<li id="m1">
-				<a href="" target="_self">Играть</a>
-			</li>
-			<li id="m2" class="active">
-				<a href="" target="_self">Профиль</a>
-			</li>
-			<li id="m3">
-				<a href="" target="_self">Торговля</a>
-			</li>
-			<li id="m4">
-				<a href="" target="_self">Сталкеры</a>
-			</li>
-			<li id="m5">
-				<a href="" target="_self">Настройки</a>
-			</li>
-			<li id="m6">
-				<a href="" target="_self">Об игре</a>
-			</li>
-		</ul>
-	</div>
-</div>
 
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
 	<div style="vertical-align: middle; display: table-cell;">

@@ -187,6 +187,8 @@ public class UserController {
         ScriptEntity se = Script1.create();
 
         if (pageID.equals(se.getEndPage())) {
+            ue.setMap(new Long(0));
+            userDao.updateResourses(ue);
             return "redirect:gameEnd";
         } else {
             Map pm = se.getPageMap();
@@ -232,6 +234,10 @@ public class UserController {
     public String die(Model model) {
         return "redirect:main";
 
+    }
+    @GetMapping("/user/about")
+    public String aboutView(@ModelAttribute(name = "user") UserEntity user) {
+        return "about";
     }
 
 }

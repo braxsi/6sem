@@ -4,7 +4,7 @@
 <head>
 	<title>User added</title>
 	<style>
-		body { background: url(img/stalker1.jpg); }
+		body { background: url(${pageContext.servletContext.contextPath}/img/stalker1.jpg); }
 	</style>
 	<link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
 </head>

@@ -4,9 +4,10 @@
 <head>
     <title>Login</title>
     <style>
-        body { background: url(img/stalker1.jpg); }
+        body { background: url(${pageContext.servletContext.contextPath}/img/stalker1.jpg); }
     </style>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
+    <script src="${pageContext.servletContext.contextPath}/webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
 

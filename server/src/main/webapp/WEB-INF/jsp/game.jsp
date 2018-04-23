@@ -21,7 +21,7 @@
 <head>
     <title>Update user info</title>
     <style>
-        body { background: url(img/stalker1.jpg); }
+        body { background: url(${pageContext.servletContext.contextPath}/img/stalker1.jpg); }
     </style>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/header.css" type="text/css">
@@ -35,7 +35,7 @@
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Об игре">Об игре</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
