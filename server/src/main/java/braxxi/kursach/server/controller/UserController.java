@@ -240,4 +240,22 @@ public class UserController {
         return "about";
     }
 
+    @GetMapping("/user/test")
+    public String testView(@ModelAttribute(name = "user") UserEntity user) {
+        return "test";
+    }
+
+    @PostMapping("/user/test")
+    public String test(Model model) {
+        /*int pageID = 1;
+        ScriptEntity se = Script1.create();
+        //PageEntity pe = (PageEntity) se.getPageList().get(pageID);*/
+        return "test";
+    }
+
+    @GetMapping("/user/gallery")
+    public String galleryView(@ModelAttribute(name = "user") UserEntity user) {
+        return "gallery";
+    }
+
 }
