@@ -34,7 +34,7 @@ public class UserDao extends BaseDao {
 		ue.setRadiation(ue1.getRadiation());
 		ue.setCartridges(ue1.getCartridges());
 		ue.setGold(ue1.getGold());
-		ue.setMap(ue1.getMap());
+		ue.setCurrentPageId(ue1.getCurrentPageId());
 		return ue;
 	}
 
@@ -127,7 +127,7 @@ public class UserDao extends BaseDao {
 				.addValue("cartridges", user.getCartridges())
 				.addValue("radiation", user.getRadiation())
 				.addValue("gold", user.getGold())
-		        .addValue("map", user.getMap()) ;
+		        .addValue("map", user.getCurrentPageId()) ;
 	}
 
 	public static final RowMapper<UserEntity> USER_ROW_MAPPER = new RowMapper<UserEntity>() {
@@ -162,7 +162,7 @@ public class UserDao extends BaseDao {
 			userEntity.setCartridges(rs.getInt("cartridges"));
 			userEntity.setRadiation(rs.getInt("radiation"));
 			userEntity.setGold(rs.getInt("gold"));
-			userEntity.setMap(new Long(rs.getInt("map")));
+			userEntity.setCurrentPageId(new Long(rs.getInt("map")));
 			return userEntity;
 		}
 	};

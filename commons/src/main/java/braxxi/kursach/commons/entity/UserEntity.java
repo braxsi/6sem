@@ -9,7 +9,7 @@ public class UserEntity extends BaseEntity {
 	private int cartridges;
 	private int radiation;
 	private int gold;
-	private Long map;
+	private Long currentPageId;
 
 
 	public UserEntity() {
@@ -75,10 +75,10 @@ public class UserEntity extends BaseEntity {
 		this.gold = gold;
 	}
 
-    public Long getMap() {
-        return this.map;
+    public Long getCurrentPageId() {
+        return this.currentPageId;
     }
-    public void setMap(Long map) {
-        this.map = map;
+    public void setCurrentPageId(Long currentPageId) {
+        this.currentPageId = currentPageId;
     }
 }
