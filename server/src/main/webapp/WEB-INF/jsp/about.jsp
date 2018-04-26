@@ -19,16 +19,17 @@
     <li><a href="${pageContext.servletContext.contextPath}/user/main" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources"title="Ресурсы">Ресурсы</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/gallery" title="Галерея">Галерея</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/test" title="Тест">Тест</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/about" class="current" title="Об игре">Об игре</a></li>
 </ul></nav>
 
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
-        Мы рады, что вы решили сыграть в нашу игру жанра визуальная новелла. Надеемся, вам понравится эта игра и вы посоветуете её своим знакомым.
+        Мы рады, что вы решили сыграть в нашу игру. Надеемся она вам понравится и вы посоветуете её своим знакомым.
         S.T.A.L.K.E.R.: Multiplayer mod – браузерная игра (веб-приложение) в жанре визуальной новеллы в сеттинге одной из самых узнаваемых игровых вселенных, разработанных на постсоветском пространстве. Сеттинг представлен в жанре научной фантастики и выживания в аномальной Чернобыльской Зоне Отчуждения. Ключевые особенности сеттинга: уникальная гнетущая атмосфера, выживание во враждебном мире, населенном коварными мутантами, опасными аномалиями и сталкерами – искателями приключений с размытыми понятиями о чести и морали.
-        Данная визуальная новелла располагает довольно вариативным прохождением – ваши действия напрямую влияют на сюжетные повороты и концовку игры.
+        Данная визуальная новелла располагает довольно вариативным прохождением – ваши действия напрямую влияют на сюжетные повороты и концовку игры. Также присутствует возможность просмотра галереи картинок тематики S.T.A.L.K.E.R и тест, в котором вы можете проверить свои знания о серии игр.
     </div>
 </div>
 </body>

@@ -20,9 +20,10 @@
     <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/user/about title="Об игре">Об игре</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/gallery" title="Галерея">Галерея</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/test" title="Тест">Тест</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
 
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">

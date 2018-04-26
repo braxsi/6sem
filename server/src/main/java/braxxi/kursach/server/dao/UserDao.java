@@ -116,6 +116,11 @@ public class UserDao extends BaseDao {
 				null, GROUP_ROW_MAPPER);
 	}
 
+	public List<UserEntity> getAllUsers () {
+		return query("SELECT * FROM users_info",
+				null, USER_ROW_MAPPER);
+	}
+
 	private MapSqlParameterSource getMapSqlParameterSource(UserEntity user) {
 		return new MapSqlParameterSource()
 				.addValue("user_id", user.getId())

@@ -17,11 +17,12 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/main" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/gallery" title="Галерея">Галерея</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/test" class="current" title="Тест">Тест</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
 
@@ -29,21 +30,62 @@
     <div style="vertical-align: middle; display: table-cell;">
 
         <table align="center" bgcolor="#f0f8ff">
-            <th align="center"><h3 align="center">тест по серии игр STALKER</h3></th>
-
-            <form:form method="POST" action="choiceGroup">
 
                 <tr class="form-group"><td>
-                    <c:forEach var="item" items="${groups}">
-                        <div><input type="radio" name="group" id="${item.id}" value="${item.id}"><label for="${item.id}">${item.name}</label>
-                        </div>
-                    </c:forEach>
-                </td></tr>
-                <tr>
-                    <td align="center"><input type="submit" value="Submit"/></td>
-                </tr>
+                    <script type="application/javascript" src="${pageContext.servletContext.contextPath}/questionnaire/jquery-1.9.1.min.js"></script>
+                    <script type="application/javascript" src="${pageContext.servletContext.contextPath}/questionnaire/mustache-2.2.1.min.js"></script>
+                    <script type="application/javascript" src="${pageContext.servletContext.contextPath}/questionnaire/q1.js"></script>
+                    <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/questionnaire/q.css"/>
 
-            </form:form>
+                    <h1 align="center">Тест по серии игр STALKER</h1>
+
+
+                    <p>Желаешь проверить свои познания о серии игр STALKER? Тогда ты зашел куда надо.</p>
+
+                    <div id="tibo2016" class="qRoot">
+
+                        <div class="qQuestionTemplate">
+                            <div class="qContentPanel">
+                                <div class="qQuestion">
+                                    {{{question}}}
+                                </div>
+                                <div class="qAnswers">
+                                    <form>
+                                        {{#answers}}
+                                        <div class="qAnswer">
+                                            <input type="radio" id="qAnswer_{{index}}" name="qAnswer" value="{{index}}" onchange="answeredQuestion(this)">
+                                            <label for="qAnswer_{{index}}">{{{answer}}}</label>
+                                        </div>
+                                        <b></b>
+                                        {{/answers}}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="qResultTemplate">
+                            <div class="qResultPanel">
+                                <div class="qResultPanelHeader">Результаты:</div>
+                                <div class="qResultPanelText">
+                                    Правильных ответов {{correctAnswers}} из {{questions}}. {{{result.text}}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="qContent"></div>
+
+                        <div class="qButtons">
+                            <!--<input type="button" onclick="answerQuestion('#tibo2016')" value="Ответить" class="qBtnAnswer">-->
+                            <input  type="button" onclick="checkQuestion('#tibo2016')" value="Проверить" class="qBtnCheck">
+                            <input  type="button"  onclick="continueToNextQuestion('#tibo2016')" value="Продолжить" class="qBtnContinue">
+                        </div>
+                    </div>
+
+                    <script type="application/javascript">
+                        showQuestion('#tibo2016');
+                    </script>
+
+                </td></tr>
         </table>
     </div></div>
 </body>

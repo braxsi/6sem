@@ -29,13 +29,13 @@
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
         <table align="center" bgcolor="#f0f8ff">
-            <form:form method="POST" action="gameEnd">
+            <form:form method="POST" action="badend">
                 <th align="center" colspan="4"><h3 align="center">Страница заключительная.</h3></th>
                 <tr>
-                    <td align="center">Вас перевязали, используя ваши аптечки, и вам стало немного лучше. Вы кое-как дошли до лагеря Лиса и с чувством выполненного долга получили свою награду. Как ни крути, а жизнь прекрасна, подумали вы и сели у костра, подпевая песню. </td>
+                    <td align="center">Вы бежали так быстро как могли. Сидорович был, как обычно, у себя. Вы подошли и с виноватым видом рассказали о ваших приклюениях. Внимательно выслушав, Сидорович приказал уходить, сказав пару ласковых вам вслед. Ну а что же вы могли сделать по-другому, спросили вы у самого себя?</td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2"><input type="submit" value="Играть сначала"/></td>
+                    <td align="center" colspan="2"><input type="submit" value="конец"/></td>
                 </tr>
             </form:form>
         </table>

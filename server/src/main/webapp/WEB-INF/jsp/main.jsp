@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-    <title>User added</title>
+    <title>Start game</title>
     <style>
         body { background: url(${pageContext.servletContext.contextPath}/img/stalker1.jpg); }
     </style>
@@ -20,8 +20,9 @@
     <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
-    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Настройки">Настройки</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/gallery" title="Галерея">Галерея</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/test" title="Тест">Тест</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
 
@@ -29,9 +30,9 @@
     <div style="vertical-align: middle; display: table-cell;">
         <table align="center" bgcolor="#f0f8ff">
             <form:form method="POST" action="main">
-            <th align="center" colspan="4"><h3 align="center">Trade</h3></th>
+            <th align="center" colspan="4"><h3 align="center">Предыстория</h3></th>
             <tr>
-                <td align="center">123123123</td>
+                <td align="center">Уже давно мир поглотила катастрофа. Многие погибли, но некоторые привыкли к новой жизни и каждый день борятся за свое существование. Вы встречаетесь со своим давним другом Сидоровичем, он должен дать вам очередное важное задание.</td>
             </tr>
             <tr>
             <td align="center" colspan="2"><input type="submit" value="Submit"/></td>

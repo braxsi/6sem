@@ -9,13 +9,7 @@
         Spring boot will handle the resource mapping automcatically -->
     <!--	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" /> -->
     <link href="${pageContext.servletContext.contextPath}/css/main.css" rel="stylesheet" />
-
-    <link href="https://bsuir.by/online/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-    <link href="https://bsuir.by/online/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" >
-    <link href="https://bsuir.by/online/layouts/58/style/style.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.servletContext.contextPath}/css/header.css" rel="stylesheet" type="text/css" charset="utf-8">
-    <link href="https://bsuir.by/online/layouts/58/style/footer.css" rel="stylesheet" type="text/css" charset="utf-8">
-    <link href="https://bsuir.by/online/layouts/58/style/font.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="https://bsuir.by/online/layouts/493/js/jssor.slider.mini.js"></script>
 
@@ -73,56 +67,20 @@
 	</div>
 </nav>
 -->
-<header>
+<nav class="b-header_mainmenu"><ul>
+    <li><a href="${pageContext.servletContext.contextPath}/user/main" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/resources"title="Ресурсы">Ресурсы</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/we/" title="Сталкеры">Сталкеры</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/gallery" class="current" title="Галерея">Галерея</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/test" title="Тест">Тест</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
+</ul></nav>
+<div style="vertical-align: middle; display: table; width:100%; height: 100%">
+    <div style="vertical-align: middle; display: table-cell;">
+
+<div id ="content" align="center">
     <div class="container">
-        <div class="headlogo row-fluid show-grid" align="center">
-            <div class="span6">
-                <a href="http://www.bsuir.by/musey/" title="На главную">   <img src="https://bsuir.by/m/12_113415_1_105358.png"  alt="Виртуальный музей БГУИР" border="0" vspace="0" hspace="0" ></a>
-                <div class="logoimg">
-                    <div class="header-title-1"><a href="https://www.bsuir.by/musey/" title="На главную">урсовой</a></div>
-                    <div class="header-title-2"><a href="https://www.bsuir.by/musey/" title="На главную">роект</a></div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="span3 offset3">
-
-                <div class="contact">
-                    <p><a href="">Логин</a></p>
-                    <p><a href="">Регистрация</a></p></div>
-            </div>
-        </div>
-    </div>
-    <div class="nav-bar">
-        <div class="container">
-
-            <ul class="nav nav-pills">
-                <li id="m1">
-                    <a href="" target="_self">Просмотр объявлений</a>
-                </li>
-                <li id="m2" class="active">
-                    <a href="" target="_self">Подобрать вариант</a>
-                </li>
-                <li id="m3">
-                    <a href="" target="_self">Добавить объявление</a>
-                </li>
-                <li id="m4">
-                    <a href="" target="_self">Редактировать объявления</a>
-                </li>
-                <li id="m5">
-                    <a href="" target="_self">Рассчитать стоимость</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
-<div id ="content">
-    <div class="container">
-
-        <div class="starter-template">
-            <h1>Spring Boot Web JSP Example</h1>
-            <h2>Message: ${message} at ${time}</h2>
-        </div>
-
 
 
         <div class="gallery">
@@ -276,51 +234,27 @@
                         <div u="slides" class="m_g_slides">
 
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_114496.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_114496.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = &nbsp; -->
-                                <img src="https://bsuir.by/m/12_100229_1_114496.jpg" u=image></div>
-                            <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_120117.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_120117.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="/ru/proekt-bguir-znaniya-i-stil-zhizni"  >общая страница зож2017</a> -->
-                                <a href="https://bsuir.by/ru/proekt-bguir-znaniya-i-stil-zhizni"><img src="https://bsuir.by/m/12_100229_1_120117.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker1.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_118968.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_118968.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="https://bi.bsuir.by/"  >https://bi.bsuir.by/</a> -->
-                                <a href="https://bi.bsuir.by/"><img src="https://bsuir.by/m/12_100229_1_118968.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_117004.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_117004.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="https://www.bsuir.by/ru/news/99679-obnovlennaya-respublikanskaya-doska-pocheta-otkrylas-v-minske--bguir-snova-sredi-pobediteley"  >https://www.bsuir.by/ru/news/99679-obnovlennaya-respublikanskaya-doska-pocheta-otkrylas-v-minske--bguir-snova-sredi-pobediteley</a> -->
-                                <a href="https://www.bsuir.by/ru/news/99679-obnovlennaya-respublikanskaya-doska-pocheta-otkrylas-v-minske--bguir-snova-sredi-pobediteley"><img src="https://bsuir.by/m/12_100229_1_117004.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker99.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_114724.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_114724.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="https://www.bsuir.by/ru/news/99439-bguir-vruchili-nagradu-za-dostizheniya-v-oblasti-kachestva"  >https://www.bsuir.by/ru/news/99439-bguir-vruchili-nagradu-za-dostizheniya-v-oblasti-kachestva</a> -->
-                                <a href="https://www.bsuir.by/ru/news/99439-bguir-vruchili-nagradu-za-dostizheniya-v-oblasti-kachestva"><img src="https://bsuir.by/m/12_100229_1_114724.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker2.jpg" u=image>
+                            </div>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker3.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_110666.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_110666.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="http://distant.bsuir.by/dot/"  >http://distant.bsuir.by/dot/</a> -->
-                                <a href="http://distant.bsuir.by/dot/"><img src="https://bsuir.by/m/12_100229_1_110666.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker4.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_110250.jpg" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_110250.jpg" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="http://ias.bsuir.by"  >http://ias.bsuir.by </a> -->
-                                <a href="http://ias.bsuir.by"><img src="https://bsuir.by/m/12_100229_1_110250.jpg" u=image></a>
+                                <img src="${pageContext.servletContext.contextPath}/img/stalker5.jpg" u=image>
                             </div>
                             <div>
-                                <!-- <a u=image href="#"><img src="/m/12_100229_1_119614.png" ></a> -->
-                                <!-- gdp 16.09.15 <a href="https://www.youtube.com/user/videostudiabsuir" target="_blank"><img src="/m/12_100229_1_119614.png" u=image></a> -->
-                                <!-- tzv 10.12.15 url = <a href="http://bit-cup.bsuir.by/"  >http://bit-cup.bsuir.by/</a> -->
-                                <a href="http://bit-cup.bsuir.by/"><img src="https://bsuir.by/m/12_100229_1_119614.png" u=image></a>
+                               <img src="${pageContext.servletContext.contextPath}/img/stalker98.jpg" u=image>
                             </div>
                         </div>
 
@@ -341,12 +275,11 @@
                 </script>	</div>
         </div>
 
-        <a href="#" class="scrollup">Scroll</a>
 
     </div>
 </div>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
-
+    </div></div>
 </body>
 
 </html>

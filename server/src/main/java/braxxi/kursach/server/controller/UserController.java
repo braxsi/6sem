@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -186,11 +187,26 @@ public class UserController {
         ////
         ScriptEntity se = Script1.create();
 
-        if (pageID.equals(se.getEndPage())) {
+        /*if (pageID.equals(se.getEndPage())) {
+            Map pm = se.getPageMap();
+            PageEntity pe = (PageEntity) pm.get(pageID);
+            ActionEntity ae = (ActionEntity) pe.getActionList().get(action);
+            ue.setBandage(ue.getBandage() + ae.getBandage());
+            ue.setRadiation(ue.getRadiation() + ae.getRadiation());
+            ue.setCartridges(ue.getRadiation() + ae.getRadiation());
+            ue.setGold(ue.getGold() + ae.getGold());
+            if (ae.getTransit()== -1) {
+                ue.setMap(new Long(0));
+                userDao.updateResourses(ue);
+                return "redirect:die";
+
+            }
+
+
             ue.setMap(new Long(0));
             userDao.updateResourses(ue);
             return "redirect:gameEnd";
-        } else {
+        } else {*/
             Map pm = se.getPageMap();
             PageEntity pe = (PageEntity) pm.get(pageID);
             ActionEntity ae = (ActionEntity) pe.getActionList().get(action);
@@ -203,13 +219,25 @@ public class UserController {
                 userDao.updateResourses(ue);
                 return "redirect:die";
             } else {
-                ue.setMap(new Long(ae.getTransit()));
-                userDao.updateResourses(ue);
-                PageEntity peNew = (PageEntity) pm.get(ue.getMap());
-                model.addAttribute("page", peNew);
+                if (ae.getTransit()== -2) {
+                    ue.setMap(new Long(0));
+                    userDao.updateResourses(ue);
+                    return "redirect:badend";
+                } else {
+                    if (pageID.equals(se.getEndPage())) {
+                        ue.setMap(new Long(0));
+                        userDao.updateResourses(ue);
+                        return "redirect:gameEnd";
+                    } else {
+                        ue.setMap(new Long(ae.getTransit()));
+                        userDao.updateResourses(ue);
+                        PageEntity peNew = (PageEntity) pm.get(ue.getMap());
+                        model.addAttribute("page", peNew);
+                    }
+                }
             }
             return "game";
-        }
+        /*}*/
     }
     @GetMapping("/user/gameEnd")
     public String gameEndView(Model model) {
@@ -235,6 +263,20 @@ public class UserController {
         return "redirect:main";
 
     }
+
+    @GetMapping("/user/badend")
+    public String badendView(Model model) {
+        //UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        //Long pageID = ue.getMap();
+        ////
+        return "badend";
+    }
+    @PostMapping("/user/badend")
+    public String badend(Model model) {
+        return "redirect:main";
+
+    }
+
     @GetMapping("/user/about")
     public String aboutView(@ModelAttribute(name = "user") UserEntity user) {
         return "about";
@@ -256,6 +298,22 @@ public class UserController {
     @GetMapping("/user/gallery")
     public String galleryView(@ModelAttribute(name = "user") UserEntity user) {
         return "gallery";
+    }
+
+    @GetMapping("/user/stalkers")
+    public String stalkersView(Model model) {
+        List<UserEntity> ue = userDao.getAllUsers ();
+        for (int i=0; i<ue.size(); i++) {
+            UserEntity temp = (UserEntity)ue.get(i);
+            if (temp.getGroup_id()==-1) {
+                ((UserEntity) ue.get(i)).setGroupName("");
+            } else {
+                String groupName = ((GroupEntity) userDao.getGroup(temp.getGroup_id())).getName();
+                ((UserEntity) ue.get(i)).setGroupName(groupName);
+            }
+        }
+        model.addAttribute("groups", ue);
+        return "stalkers";
     }
 
 }

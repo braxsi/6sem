@@ -10,7 +10,7 @@ public class UserEntity extends BaseEntity {
 	private int radiation;
 	private int gold;
 	private Long map;
-
+	private  String groupName;
 
 	public UserEntity() {
 	}
@@ -81,4 +81,12 @@ public class UserEntity extends BaseEntity {
     public void setMap(Long map) {
         this.map = map;
     }
+
+	public String getGroupName() {
+		return this.groupName;
+	}
+	public void setGroupName(String grooupName) {
+		this.groupName = grooupName;
+	}
+
 }
