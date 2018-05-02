@@ -41,4 +41,8 @@ public class ScriptEntity extends BaseEntity  {
     public void setEndPage(Long endPage) {
         this.endPage = endPage;
     }
+
+    public PageEntity getPage(Long pageID) {
+        return pageMap.get(pageID);
+    }
 }

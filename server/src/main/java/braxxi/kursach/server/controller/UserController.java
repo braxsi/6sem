@@ -1,8 +1,12 @@
 package braxxi.kursach.server.controller;
 
-import braxxi.kursach.commons.entity.*;
+import braxxi.kursach.commons.entity.ActionEntity;
+import braxxi.kursach.commons.entity.PageEntity;
+import braxxi.kursach.commons.entity.ScriptEntity;
+import braxxi.kursach.commons.entity.UserEntity;
 import braxxi.kursach.server.dao.UserDao;
 import braxxi.kursach.server.security.CurrentUser;
+import braxxi.kursach.server.service.ScriptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +26,9 @@ public class UserController {
 
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    ScriptService scriptService;
 
     @GetMapping("/")
     public String welcome(Map<String, Object> model) {
@@ -162,8 +169,8 @@ public class UserController {
 
     @PostMapping("/user/main")
     public String main(Model model) {
-        int pageID = 1;
-        ScriptEntity se = Script1.create();
+        //int pageID = 1;
+        //ScriptEntity se = Script1.create();
         //PageEntity pe = (PageEntity) se.getPageList().get(pageID);
         return "redirect:game";
     }
@@ -171,11 +178,10 @@ public class UserController {
     @GetMapping("/user/game")
     public String gameView(Model model) {
         UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
-        Long pageID = ue.getMap();
+        Long pageID = ue.getCurrentPageId();
         ////
-        ScriptEntity se = Script1.create();
-        Map pm = se.getPageMap();
-        PageEntity pe = (PageEntity) pm.get(pageID);
+        ScriptEntity se = scriptService.getScript1();
+        PageEntity pe = se.getPage(pageID);
         model.addAttribute("page", pe);
         return "game";
     }
@@ -183,9 +189,9 @@ public class UserController {
     @PostMapping("/user/game")
     public String game(@RequestParam("action") Integer action, Model model) {
         UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
-        Long pageID = new Long(ue.getMap());
+        Long pageID = new Long(ue.getCurrentPageId());
         ////
-        ScriptEntity se = Script1.create();
+        ScriptEntity se = scriptService.getScript1();
 
         /*if (pageID.equals(se.getEndPage())) {
             Map pm = se.getPageMap();
@@ -215,7 +221,7 @@ public class UserController {
             ue.setCartridges(ue.getRadiation() + ae.getRadiation());
             ue.setGold(ue.getGold() + ae.getGold());
             if (ae.getTransit()== -1) {
-                ue.setMap(new Long(0));
+                ue.setCurrentPageId(new Long(0));
                 userDao.updateResourses(ue);
                 return "redirect:die";
             } else {
@@ -242,7 +248,7 @@ public class UserController {
     @GetMapping("/user/gameEnd")
     public String gameEndView(Model model) {
         //UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
-        //Long pageID = ue.getMap();
+        //Long pageID = ue.getCurrentPageId();
         ////
         return "gameEnd";
     }
@@ -254,7 +260,7 @@ public class UserController {
     @GetMapping("/user/die")
     public String dieView(Model model) {
         //UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
-        //Long pageID = ue.getMap();
+        //Long pageID = ue.getCurrentPageId();
         ////
         return "die";
     }
