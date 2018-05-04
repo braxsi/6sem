@@ -19,7 +19,7 @@
 </head>
 <body>
 <nav class="b-header_mainmenu"><ul>
-	<li><a href="${pageContext.servletContext.contextPath}/user/main" title="Играть">Играть</a></li>
+	<li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" title="Играть">Играть</a></li>
 	<li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
 	<li><a href="${pageContext.servletContext.contextPath}/user/resources" class="current" title="Ресурсы">Ресурсы</a></li>
 	<li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -30,30 +30,30 @@
 
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
 	<div style="vertical-align: middle; display: table-cell;">
-		<table align="center" bgcolor="#f0f8ff">
-			<th align="center" colspan="4"><h3 align="center">Trade</h3></th>
+		<table align="center" style="background-color: #f0f8ff;">
+			<th align="center" colspan="4" style="padding: 10px 20px;"><h3 align="center">Трейд</h3></th>
 <form:form method="POST" action="resources" modelAttribute="user">
 	<tr class="form-group">
-		<td><form:label path="bandage">Bandage:</form:label></td>
-		<td><form:input path="bandage" class="form-control" disabled="true"/></td>
-		<td><button type="submit" value="bandage+" name="action" class="btn btn-default">bandage +</button></td>
-		<td><button type="submit" value="bandage-" name="action" class="btn btn-default">bandage -</button></td>
+		<td style="padding: 10px 20px;"><form:label path="bandage">Аптечка:</form:label></td>
+		<td style="padding: 10px 20px;"><form:input path="bandage" class="form-control" disabled="true"/></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="bandage+" name="action" class="btn btn-default">+1 аптечка</button></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="bandage-" name="action" class="btn btn-default">-1 аптечка</button></td>
 	</tr>
 	<tr class="form-group">
-		<td><form:label path="cartridges">Cartridges</form:label></td>
-		<td><form:input path="cartridges" class="form-control" disabled="true"/></td>
-		<td><button type="submit" value="cartridges+" name="action" class="btn btn-default">cartridges +</button></td>
-		<td><button type="submit" value="cartridges-" name="action" class="btn btn-default">cartridges -</button></td>
+		<td style="padding: 10px 20px;"><form:label path="cartridges">Патроны</form:label></td>
+		<td style="padding: 10px 20px;"><form:input path="cartridges" class="form-control" disabled="true"/></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="cartridges+" name="action" class="btn btn-default">+1 патрон</button></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="cartridges-" name="action" class="btn btn-default">-1 патрон</button></td>
 	</tr>
 	<tr class="form-group">
-		<td><form:label path="radiation">Radiation</form:label></td>
-		<td><form:input path="radiation" class="form-control" disabled="true"/></td>
-		<td><button type="submit" value="radiation+" name="action" class="btn btn-default">radiation +</button></td>
-		<td><button type="submit" value="radiation-" name="action" class="btn btn-default">radiation -</button></td>
+		<td style="padding: 10px 20px;"><form:label path="radiation">Рад-комплект</form:label></td>
+		<td style="padding: 10px 20px;"><form:input path="radiation" class="form-control" disabled="true"/></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="radiation+" name="action" class="btn btn-default">+1 рад-комплект</button></td>
+		<td style="padding: 10px 20px;"><button type="submit" value="radiation-" name="action" class="btn btn-default">-1 рад-комплект</button></td>
 	</tr>
 	<tr class="form-group">
-		<td><form:label path="gold">Gold</form:label></td>
-		<td><form:input path="gold" class="form-control" disabled="true"/></td>
+		<td style="padding: 10px 20px;"><form:label path="gold">Деньги</form:label></td>
+		<td style="padding: 10px 20px;"><form:input path="gold" class="form-control" disabled="true"/></td>
 	</tr>
 </form:form>
 		</table>

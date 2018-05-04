@@ -17,7 +17,7 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -29,8 +29,8 @@
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
 
-        <table align="center" bgcolor="#f0f8ff">
-            <th align="center"><h3 align="center">Welcome, choice group</h3></th>
+        <table align="center" style="background-color: #f0f8ff;">
+            <th align="center"><h3 align="center">Здравствуйте, выберите группу, за которую хотите сыграть.</h3></th>
 
 <form:form method="POST" action="choiceGroup">
 

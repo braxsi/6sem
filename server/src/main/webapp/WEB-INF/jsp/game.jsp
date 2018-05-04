@@ -30,7 +30,7 @@
 </head>
 <body>
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -41,14 +41,14 @@
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
 
-        <table align="center" bgcolor="#f0f8ff">
+        <table align="center" style="background-color: #f0f8ff;">
 
-            <th align="center" colspan="2"><h3 align="center">${page.title}</h3></th>
+            <th align="center" colspan="2" style="padding: 10px 20px;"><h3 align="center">${page.title}</h3></th>
                 <tr>
-                    <td>${page.text}</td>
+                    <td style="padding: 10px 20px;">${page.text}</td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2">
+                    <td align="center" colspan="2" style="padding: 10px 20px;">
                     <form:form method="POST" action="game">
                         <c:forEach var="item" items="${page.actionList}" varStatus="status">
                             <button type="submit" value="${status.index}" name="action">${status.index+1}</button>

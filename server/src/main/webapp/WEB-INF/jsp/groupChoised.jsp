@@ -16,7 +16,7 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -24,8 +24,7 @@
     <li><a href="${pageContext.servletContext.contextPath}/user/test" title="Тест">Тест</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/about" title="Об игре">Об игре</a></li>
 </ul></nav>
-
-Group was save
+Вы выбрали группу. Приятной игры!
 <tr>
 <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
 </tr>

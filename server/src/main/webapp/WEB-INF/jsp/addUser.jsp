@@ -13,8 +13,8 @@
     <div style="vertical-align: middle; display: table; width:100%; height: 100%">
 		<div style="vertical-align: middle; display: table-cell;">
 
-	<table align="center" bgcolor="#f0f8ff">
-		<th align="center" colspan="2"><h3 align="center">Welcome, Enter The User Details</h3></th>
+	<table align="center" style="background-color: #f0f8ff;">
+		<th align="center" colspan="2"><h3 align="center">Здравствуйте. Введите необходимые данные.</h3></th>
 	<form:form method="POST" action="addUser" modelAttribute="user">
 		<tr>
 			<td><form:label path="login">Nickname</form:label></td>
@@ -29,7 +29,7 @@
 			<td><form:input path="email"/></td>
 		</tr>
 		<tr>
-			<td align="center" colspan="2"><input type="submit" value="Submit"/></td>
+			<td align="center" colspan="2"><input type="submit" value="Добавить"/></td>
 		</tr>
 	</form:form>
 	</table>

@@ -16,7 +16,7 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main/" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -35,8 +35,8 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input type="submit1" value="Submit1"/>
-                    <input type="submit2" value="Submit2"/>
+                    <input type="submit1" value="Выбор1"/>
+                    <input type="submit2" value="Выбор2"/>
                 </td>
             </tr>
             </form:form>

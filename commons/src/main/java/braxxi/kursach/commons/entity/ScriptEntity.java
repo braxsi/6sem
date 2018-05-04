@@ -10,6 +10,7 @@ public class ScriptEntity extends BaseEntity  {
     private Map<Long, PageEntity> pageMap;
     private String name;
     private Long endPage;
+    private String description;
 
     public ScriptEntity() {
     }
@@ -22,6 +23,11 @@ public class ScriptEntity extends BaseEntity  {
     public String getName() { return this.name; }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() { return this.description; }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<PageEntity> getPageList() { return this.pageList; }

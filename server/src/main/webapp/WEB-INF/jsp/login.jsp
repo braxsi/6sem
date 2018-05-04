@@ -15,7 +15,7 @@
     <div style="vertical-align: middle; display: table-cell;">
 
         <table align="center" bgcolor="#f0f8ff">
-            <th align="center" colspan="2"><h3 align="center">Enter login and password</h3></th>
+            <th align="center" colspan="2"><h3 align="center">Здравствуйте, введите логин и пароль</h3></th>
             <form:form method="POST" action="login" modelAttribute="user">
                 <tr>
                     <td><form:label path="login">Login</form:label></td>

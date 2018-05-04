@@ -17,7 +17,7 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>

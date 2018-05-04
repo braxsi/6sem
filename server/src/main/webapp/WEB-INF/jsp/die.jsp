@@ -17,7 +17,7 @@
 <body>
 
 <nav class="b-header_mainmenu"><ul>
-    <li><a href="${pageContext.servletContext.contextPath}/user/main" class="current" title="Играть">Играть</a></li>
+    <li><a href="${pageContext.servletContext.contextPath}/user/choiceGroup" class="current" title="Играть">Играть</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/updateUser" title="Профиль">Профиль</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/resources" title="Ресурсы">Ресурсы</a></li>
     <li><a href="${pageContext.servletContext.contextPath}/user/stalkers" title="Сталкеры">Сталкеры</a></li>
@@ -28,14 +28,14 @@
 
 <div style="vertical-align: middle; display: table; width:100%; height: 100%">
     <div style="vertical-align: middle; display: table-cell;">
-        <table align="center" bgcolor="#f0f8ff">
+        <table align="center" style="background-color: #f0f8ff;">
             <form:form method="POST" action="die">
                 <th align="center" colspan="4"><h3 align="center">you die</h3></th>
                 <tr>
                     <td align="center">you die</td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2"><input type="submit" value="Submit"/></td>
+                    <td align="center" colspan="2"><input type="submit" value="Играть сначала"/></td>
                 </tr>
             </form:form>
         </table>

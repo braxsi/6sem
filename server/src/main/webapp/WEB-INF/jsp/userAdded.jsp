@@ -9,6 +9,6 @@
 	<link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-User <c:out value="${пользователь.email}"/> был создан
+Пользователь <c:out value="${user.email}"/> был создан
 </body>
 </html>

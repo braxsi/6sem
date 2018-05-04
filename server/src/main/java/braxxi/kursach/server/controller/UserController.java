@@ -1,9 +1,6 @@
 package braxxi.kursach.server.controller;
 
-import braxxi.kursach.commons.entity.ActionEntity;
-import braxxi.kursach.commons.entity.PageEntity;
-import braxxi.kursach.commons.entity.ScriptEntity;
-import braxxi.kursach.commons.entity.UserEntity;
+import braxxi.kursach.commons.entity.*;
 import braxxi.kursach.server.dao.UserDao;
 import braxxi.kursach.server.security.CurrentUser;
 import braxxi.kursach.server.service.ScriptService;
@@ -85,34 +82,34 @@ public class UserController {
         if ("bandage-".equals(action)) {
             if (user.getBandage()>=1) {
                 user.setGold(user.getGold() + 100);
-                user.setBandage(user.getBandage() - 1);
+                user.setBandage(user.getBandage() - 100);
                 userDao.updateResourses(user);
             }
         }
         if ("cartridges+".equals(action)) {
-            if (user.getGold()>=500) {
-                user.setGold(user.getGold() - 500);
+            if (user.getGold()>=25) {
+                user.setGold(user.getGold() - 25);
                 user.setCartridges(user.getCartridges() + 1);
                 userDao.updateResourses(user);
             }
         }
         if ("cartridges-".equals(action)) {
             if (user.getCartridges()>=1) {
-                user.setGold(user.getGold() + 500);
+                user.setGold(user.getGold() + 25);
                 user.setCartridges(user.getCartridges() - 1);
                 userDao.updateResourses(user);
             }
         }
         if ("radiation+".equals(action)) {
-            if (user.getGold()>=1000) {
-                user.setGold(user.getGold() - 1000);
+            if (user.getGold()>=300) {
+                user.setGold(user.getGold() - 300);
                 user.setRadiation(user.getRadiation() + 1);
                 userDao.updateResourses(user);
             }
         }
         if ("radiation-".equals(action)) {
             if (user.getRadiation()>=1) {
-                user.setGold(user.getGold() + 1000);
+                user.setGold(user.getGold() + 300);
                 user.setRadiation(user.getRadiation() - 1);
                 userDao.updateResourses(user);
             }
@@ -150,8 +147,17 @@ public class UserController {
 
     @GetMapping("/user/choiceGroup")
     public String choiceGroupView(Model model) {
-        model.addAttribute("groups", userDao.getAllGroups ());
-        return "choiceGroup";
+        UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        if (ue.getGroup_id()==-1) {
+            model.addAttribute("groups", userDao.getAllGroups ());
+            return "choiceGroup";
+        } else {
+            if (ue.getCurrentPageId()==0) {
+                return "redirect:main";
+            } else {
+                return "redirect:game";
+            }
+        }
     }
 
     @PostMapping("/user/choiceGroup")
@@ -160,10 +166,16 @@ public class UserController {
         UserEntity ue = new UserEntity(getCurrentUserId());
         ue.setGroup_id(group);
         userDao.updateGroup(ue);
-        return "groupChoised";
+        return "redirect:main";
     }
     @GetMapping("/user/main")
-    public String mainView(@ModelAttribute(name = "user") UserEntity user) {
+    public String mainView(Model model) {
+        UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
+        //Long pageID = new Long(ue.getCurrentPageId());
+        ////
+        //ScriptEntity se = scriptService.getScript1();
+        ScriptEntity se = scriptService.getScript(ue.getGroup_id());
+        model.addAttribute("script", se);
         return "main";
     }
 
@@ -180,7 +192,8 @@ public class UserController {
         UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
         Long pageID = ue.getCurrentPageId();
         ////
-        ScriptEntity se = scriptService.getScript1();
+        // ScriptEntity se = scriptService.getScript1();
+        ScriptEntity se = scriptService.getScript(ue.getGroup_id());
         PageEntity pe = se.getPage(pageID);
         model.addAttribute("page", pe);
         return "game";
@@ -191,7 +204,8 @@ public class UserController {
         UserEntity ue = userDao.getAllUserInfo(getCurrentUserId());
         Long pageID = new Long(ue.getCurrentPageId());
         ////
-        ScriptEntity se = scriptService.getScript1();
+        //ScriptEntity se = scriptService.getScript1();
+        ScriptEntity se = scriptService.getScript(ue.getGroup_id());
 
         /*if (pageID.equals(se.getEndPage())) {
             Map pm = se.getPageMap();
@@ -226,18 +240,18 @@ public class UserController {
                 return "redirect:die";
             } else {
                 if (ae.getTransit()== -2) {
-                    ue.setMap(new Long(0));
+                    ue.setCurrentPageId(new Long(0));
                     userDao.updateResourses(ue);
                     return "redirect:badend";
                 } else {
                     if (pageID.equals(se.getEndPage())) {
-                        ue.setMap(new Long(0));
+                        ue.setCurrentPageId(new Long(0));
                         userDao.updateResourses(ue);
                         return "redirect:gameEnd";
                     } else {
-                        ue.setMap(new Long(ae.getTransit()));
+                        ue.setCurrentPageId(new Long(ae.getTransit()));
                         userDao.updateResourses(ue);
-                        PageEntity peNew = (PageEntity) pm.get(ue.getMap());
+                        PageEntity peNew = (PageEntity) pm.get(ue.getCurrentPageId());
                         model.addAttribute("page", peNew);
                     }
                 }
