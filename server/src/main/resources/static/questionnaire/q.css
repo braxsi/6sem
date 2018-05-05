@@ -1,0 +1,65 @@
+.qQuestionTemplate, .qResultTemplate {
+    display: none;
+}
+
+.qRoot {
+    /*border: solid cadetblue;*/
+	margin:20px 0 0 0;
+	text-align:center;
+}
+.qQuestion{font-size:17px;}
+.qCorrect {
+    background-color: yellow;
+}
+span.bold{font-weight:bold;}
+img{display:block;
+margin:15px auto;}
+.qAnswer label{display:inline;margin:0;}
+.qAnswer input[type="radio"]{
+margin:0 5px 3px 0;}
+.qAnswers {margin:40px 0 ;
+text-align:initial;
+margin-left:40%;}
+.qAnswer {
+margin:10px 0px 0 0;}
+
+.qButtons input[type="button"]{
+cursor:pointer;
+color:white;
+text-shadow:0 -1px 0 rgba(0,0,0,0.25);
+background-color:#49afcd;
+background-image: -moz-linear-gradient(top,#5bc0de,#2f96b4);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#5bc0de),to(#2f96b4));
+background-image: -webkit-linear-gradient(top,#5bc0de,#2f96b4);
+background-image: -o-linear-gradient(top,#5bc0de,#2f96b4);
+background-image: linear-gradient(to bottom,#5bc0de,#2f96b4);
+background-repeat: repeat-x;
+display: inline-block;
+padding: 4px 12px;
+margin-bottom: 0;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+vertical-align: middle;
+border: 1px solid #cccccc;
+border-radius: 4px;
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+}
+.qButtons input[type="button"]:hover, .qButtons input[type="button"]:focus,.qButtons input[type="button"]:active {
+    color: #ffffff;
+    background-color: #2f96b4;
+    *background-color: #2a85a0;
+}
+
+.qButtons input[type="button"]:hover, .qButtons input[type="button"]:focus {
+    color: white;
+    text-decoration: none;
+    background-position: 0 -15px;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+	}
+.qResultPanelHeader{
+font-weight:bold;}	
+	
