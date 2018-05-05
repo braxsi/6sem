@@ -1,14 +1,12 @@
 package braxxi.kursach.server.dao;
 
 import braxxi.kursach.commons.entity.BaseEntity;
-import braxxi.kursach.commons.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import javax.sql.DataSource;
-
 import java.util.List;
 
 import static org.springframework.dao.support.DataAccessUtils.singleResult;

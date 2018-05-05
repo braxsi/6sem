@@ -29,6 +29,7 @@
 
 	<modules>
 		<module>commons</module>
+		<module>business</module>
 		<module>server</module>
 	</modules>
 

@@ -1,6 +1,7 @@
 package braxxi.kursach.server.dao;
 
 import braxxi.kursach.commons.entity.UserEntity;
+import braxxi.kursach.commons.service.DbService;
 import braxxi.kursach.server.security.CurrentUser;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,11 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceDao implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private DbService dbService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userDao.login(username);
+        UserEntity user = dbService.findByLogin(username);
         if (user == null) {
             throw new UsernameNotFoundException("username " + username);
         }

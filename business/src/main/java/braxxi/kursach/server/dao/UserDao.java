@@ -29,7 +29,7 @@ public class UserDao extends BaseDao {
 				.addValue("user_id", userID);
 		UserEntity ue = queryForOptionalObject("SELECT * FROM users_info WHERE user_id=:user_id",
 				parameterSource, USER_ROW_MAPPER);
-		UserEntity ue1 = getResourses(userID);
+		UserEntity ue1 = getUserResources(userID);
 		ue.setBandage(ue1.getBandage());
 		ue.setRadiation(ue1.getRadiation());
 		ue.setCartridges(ue1.getCartridges());
@@ -60,7 +60,7 @@ public class UserDao extends BaseDao {
 				sqlParameterSource);
 	}
 
-	public void addResourses(UserEntity user_info) {
+	public void addResources(UserEntity user_info) {
 		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(user_info);
 		final GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
 		getNamedParameterJdbcTemplate().update(
@@ -72,7 +72,7 @@ public class UserDao extends BaseDao {
 		// return generatedKeyHolder.getKey().longValue();
 	}
 
-	public void updateResourses(UserEntity resourses) {
+	public void updateUserResources(UserEntity resourses) {
 		final MapSqlParameterSource sqlParameterSource = getMapSqlParameterSource(resourses);
 		getNamedParameterJdbcTemplate().update(
 				"UPDATE resourses SET " +
@@ -82,7 +82,7 @@ public class UserDao extends BaseDao {
 				sqlParameterSource);
 	}
 
-	public UserEntity getResourses(Long user_id) {
+	public UserEntity getUserResources(Long user_id) {
 		final SqlParameterSource parameterSource = new MapSqlParameterSource()
 				.addValue("user_id", user_id);
 		return queryForOptionalObject("SELECT * FROM resourses WHERE user_id=:user_id",
